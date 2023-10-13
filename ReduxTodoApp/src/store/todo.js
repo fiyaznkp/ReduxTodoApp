@@ -6,12 +6,12 @@ export const todoSlice = createSlice({
     initialState: [],
     reducers: {
       addTodo: (state, action) => {
-        state.push({ id: Date.now(), text: action.payload, completed: false });
+        state.push({ id: Date.now(), text: action.payload });
       },
       updateTodo: (state, action) => {
-        const todo = state.find((todo) => todo.id === action.payload);
+        const todo = state.find((e) => e.id === action.payload.id);
         if (todo) {
-          todo.completed = !todo.completed;
+          todo.text = action.payload.text;
         }
       },
       deleteTodo: (state, action) => {
